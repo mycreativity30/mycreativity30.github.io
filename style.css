@@ -1,0 +1,197 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0f8ff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: auto; 
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 95%; 
+    max-width: 1200px; 
+    box-sizing: border-box; 
+}
+
+h1 {
+    color: #4b0082; 
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+.level-selection {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #3e2f5b;
+    font-weight: bold;
+}
+
+#level-selector {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #008080;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#level-display {
+    color: #008080;
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.instructions {
+    color: #3e2f5b;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* --- Area Target (Rel Kereta) --- */
+.target-area {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+    margin-bottom: 50px;
+    min-height: 120px;
+    border-bottom: 8px solid #333; 
+    width: fit-content; 
+    min-width: 900px; 
+    padding: 0 10px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.target {
+    width: 80px; 
+    height: 80px; 
+    margin: 5px; 
+    border-bottom: 4px solid #cc0000; 
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 0; 
+    flex-shrink: 0; 
+}
+
+.drag-over {
+    transform: scale(1.1);
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+/* --- Area Gerbong (Draggable) --- */
+.draggable-area {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    margin-bottom: 40px;
+    min-height: 150px; 
+    gap: 15px; 
+    width: fit-content;
+    min-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px;
+}
+
+.draggable {
+    cursor: grab;
+    width: 70px; 
+    height: 70px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em; 
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s, opacity 0.3s;
+    position: relative;
+    border: 5px solid #ff6347; 
+    flex-shrink: 0; 
+}
+
+.draggable:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+
+/* Warna Gerbong acak berdasarkan angka */
+.draggable[data-number="1"] { background-color: #ff6f61; }
+.draggable[data-number="2"] { background-color: #6a5acd; }
+.draggable[data-number="3"] { background-color: #79c99e; }
+.draggable[data-number="4"] { background-color: #fce38a; color: #333;}
+.draggable[data-number="5"] { background-color: #ff00ff; }
+.draggable[data-number="6"] { background-color: #00ffff; color: #333;}
+.draggable[data-number="7"] { background-color: #ffa500; }
+.draggable[data-number="8"] { background-color: #8a2be2; }
+.draggable[data-number="9"] { background-color: #3cb371; }
+.draggable[data-number="10"] { background-color: #ff4500; }
+
+/* --- Feedback & Tombol --- */
+.feedback {
+    font-size: 1.5em;
+    color: #3e2f5b;
+    font-weight: bold;
+    padding: 10px;
+    min-height: 30px;
+    transition: color 0.5s;
+}
+
+#next-level-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+#next-level-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Efek Getar (Saat Salah) */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    90% { transform: translate(-1px, 2px) rotate(-1deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.shake {
+    animation: shake 0.5s;
+}
+
+/* Gaya Tombol Musik (PENTING: Memastikan posisi di pojok kanan bawah) */
+#toggle-music {
+    position: fixed; /* Posisi tetap relatif terhadap viewport */
+    bottom: 20px; /* Jarak 20px dari bawah */
+    right: 20px; /* Jarak 20px dari kanan */
+    padding: 10px 15px;
+    background-color: #3e2f5b;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1em;
+    z-index: 1000; /* Pastikan tombol di atas elemen lain */
+}
+
+#toggle-music:hover {
+    background-color: #5d4a77;
+}
