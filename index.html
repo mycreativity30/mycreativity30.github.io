@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kereta Angka Ajaib Final - Diperlebar</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="container">
+        <h1>🚂 Kereta Angka Ajaib 🔢</h1>
+        
+        <div class="level-selection">
+            <label for="level-selector">Pilih Level:</label>
+            <select id="level-selector"></select>
+        </div>
+        
+        <h2 id="level-display">Level 1</h2> 
+
+        <p class="instructions">Susunlah gerbong kereta ini sesuai **urutan angka** yang benar!</p>
+        
+        <div class="target-area" id="target-area">
+        </div>
+
+        <div class="draggable-area" id="draggable-area">
+        </div>
+
+        <div class="feedback" id="feedback">Siap Menyusun?</div>
+        
+        <button id="next-level-button" style="display:none;">Lanjut ke Level Berikutnya! ➡️</button> 
+    </div>
+
+    <audio id="bgm" src="background_music.mp3" loop></audio> 
+    <audio id="sfx-correct" src="correct_sound.mp3"></audio> 
+    <audio id="sfx-wrong" src="wrong_sound.mp3"></audio> 
+    <audio id="sfx-cheer" src="sfx-cheer.mp3"></audio> 
+    
+    <button id="toggle-music">🎵 Matikan Musik</button>
+
+    <script src="script.js"></script> 
+</body>
+</html>
